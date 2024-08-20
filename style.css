@@ -1,8 +1,8 @@
 body {
     background: #c1152c;
-    color: rgb(45, 45, 45);
+    color: rgb(84, 6, 6);
     padding: 10px;
-    font-family: arial;
+    font-family: serif;
 }
 #all-contents {
   max-width: 800px;
@@ -58,7 +58,9 @@ main {
 
 /* portfolio styles */
 #interests {
-    border: 4px #c1152c ridge;
+    border: 2px #c1152c ridge;
+    border-style: dashed;
+    border-width: 2px;
     padding: 8px;
     border-radius: 20px; 
 }
