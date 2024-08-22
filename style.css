@@ -56,7 +56,6 @@ main {
     padding: 15px;
 }
 
-/* portfolio styles */
 #interests {
     border: 2px #c1152c ridge;
     border-style: dashed;
@@ -66,4 +65,32 @@ main {
 }
 h2, h3 {
     margin: 0px;
+}
+
+/* portfolio styles */
+#port {
+    color: rgb(84, 6, 6);
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#portfolio li {
+    background: #e98888;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+     background: rgb(84, 6, 6);
+ }
+
+#portfolio a {
+    text-decoration: none;
+    color: rgb(84, 6, 6);
 }
