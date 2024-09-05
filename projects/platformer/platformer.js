@@ -28,7 +28,7 @@ $(function () {
      * Comment the function call out to remove the grid
      */
 
-    // drawGrid();
+    drawGrid();
 
     /////////////////////////////////////////////////
     //////////ONLY CHANGE BELOW THIS POINT///////////
@@ -50,6 +50,10 @@ createPlatform(720, 145, 20, 60)
 
 createPlatform(1000, 300, 20, 60) 
 createPlatform(1200, 300, 20, 60) 
+
+createPlatform(450, 400, 20, 60) 
+
+createPlatform(190, 500, 20, 60)
     
     // TODO 2
     // Create collectables
@@ -57,13 +61,16 @@ createPlatform(1200, 300, 20, 60)
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
 createCollectable('database', 320, 150) 
-createCollectable('database', 600, 150) 
+createCollectable('database', 570, 150) 
 createCollectable('database', 873, 150) 
 
-createCollectable('database', 1300, 300)
-createCollectable('database', 873, 300) 
+createCollectable('database', 1300, 310) 
+createCollectable('database', 873, 310) 
 
+createCollectable('database', 570, 410) 
+createCollectable('database', 400, 410) 
 
+createCollectable('database', 100, 510) 
     
     // TODO 3
     // Create cannons
