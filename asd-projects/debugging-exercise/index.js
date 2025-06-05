@@ -3,7 +3,7 @@ $(document).ready(function(){
     /////////////////
     // initialization
     /////////////////
-
+// aaaa 
     // this section initializes some variables that will be used throughout the program
     var doubleMaxSpeed = 5;
     var maxCircles = 10;
@@ -63,7 +63,7 @@ $(document).ready(function(){
     // this generates an id for a circle given the circle's number
     function getId(number){
         return "circle" + number;
-    }
+    } 
 
     // this adds a circle into the HTML
     function addNewCircleElement(circle, id){
