@@ -1,13 +1,13 @@
 #board {
   width: 400px;
   margin: auto;
-  border: silver ridge 4px;
+  border: #7e101f ridge 4px;
 }
 
 #info-bar {
   width: 400px;
   height: 40px;
-  background: lightgray;
+  background: #c1152c;
   font-size: 40px;
   text-align: center;
 }
@@ -15,15 +15,15 @@
 #shape-container {
   width: 400px;
   height: 400px;
-  background: black;
-  border-top: silver ridge 4px;
-  border-bottom: silver ridge 4px;
+  background: #e26a62;
+  border-top: #7e101f ridge 4px;
+  border-bottom: #7e101f ridge 4px;
 }
 
 #button-box {
   width: 400px;
   height: 40px;
-  background: darkgray;
+  background: #7e101f;
 }
 
 #shape {
@@ -47,4 +47,8 @@ button {
 
 p {
   margin: 5px;
+}
+
+#info-bar {
+  color: white
 }
