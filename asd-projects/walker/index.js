@@ -18,7 +18,12 @@ function runProgram(){
   }
   
   // Game Item Objects
-
+  var walker = {
+    x: 0,
+    y: 0, 
+    xSpeed: 0,
+    ySpeed: 0
+  }
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -62,8 +67,21 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-
+  function repositionGameItem() {
+    walker.x += walker.xSpeed;
+    walker.y += walker.ySpeed; 
+  }
   
+  function redrawGameItem() {
+    $("walker").css("left", walker.x);
+    $("#walker").css("top", walker.y);
+  }
+
+  function newFrame(){
+    repositionGameItem();
+    redrawGameItem();
+  }
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
