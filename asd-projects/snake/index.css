@@ -1,13 +1,13 @@
 
 body {
-  background-color: darkgreen;
+  background-color: #c1152c;
 }
 
 #board {
   width: 440px;
   height: 440px;
   border: 1px solid white;
-  background-color: black;
+  background-color: #e26a62;
 }
 
 #score, #highScore {
