@@ -32,7 +32,20 @@ function applyAndRender() {
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2, 3 & 5: Create the applyFilter function here
+$(document).ready(function () {
+  applyFilter();
+  render($("#display"), image);
+  $("#apply").on("click", applyAndRender);
+  $("#reset").on("click", resetAndRender);
+});
 
+function applyFilter() {
+  for (let i = 0; i < image.length; i++) {
+    for (let j = 0; j < image[i].length; j++) {
+      console.log(image[i][j]);
+    }
+  }
+}
 
 // TODO 9 Create the applyFilterNoBackground function
 
