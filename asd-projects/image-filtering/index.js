@@ -42,7 +42,12 @@ $(document).ready(function () {
 function applyFilter() {
   for (let i = 0; i < image.length; i++) {
     for (let j = 0; j < image[i].length; j++) {
-      console.log(image[i][j]);
+      let pixel = image[i][j];
+      let pixelArray = rgbStringToArray(pixel);
+      // This is where I’ll modify the color values later
+      pixelArray[RED] = 200;
+      let updatedPixel = rgbArrayToString(pixelArray);
+      image[i][j] = updatedPixel;
     }
   }
 }
@@ -54,6 +59,9 @@ function applyFilter() {
 
 
 // TODO 4: Create reddify filter function
+function reddify(pixelArray) {
+  pixelArray[RED] = 200;
+}
 
 
 // TODO 7 & 8: Create more filter functions
