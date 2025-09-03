@@ -31,7 +31,7 @@
     x: canvas.width - 20,
     y: canvas.height - 100,
   });
-  const ball = draw.circle(20, "#CCC");
+  const ball = draw.circle(20, "#540606");
 
   // set initial properties for the paddles
   paddlePlayer.yVelocity = 0;
@@ -95,13 +95,31 @@
     }
 
     // TODO 1: bounce the ball off the top
-
+    if (ball.y < 0) {
+      ball.y = 0; 
+      ball.yVelocity *= -1; 
+      createjs.Sound.play("wall");
+    }
 
     // TODO 2: bounce the ball off the bottom
-
+    if (ball.y > canvas.height - 20) {
+      ball.y = canvas.height - 20;
+      ball.yVelocity *= -1;
+      createjs.Sound.play("wall");
+    }
 
     // TODO 3: bounce the ball off each of the paddles
+    if (ball.x + 20 > paddleCPU.x && ball.y > paddleCPU.y && ball.y < paddleCPU.y + paddleCPU.height) {
+      ball.x = paddleCPU.x - 20; 
+      ball.xVelocity *= -1;
+      createjs.Sound.play("hit");
+    }
 
+    if (ball.x - 20 < paddlePlayer.x + paddlePlayer.width && ball.y > paddlePlayer.y && ball.y < paddlePlayer.y + paddlePlayer.height) {
+      ball.x = paddlePlayer.x + paddlePlayer.width + 20;
+      ball.xVelocity *= -1;
+      createjs.Sound.play("hit");
+    }
 
   }
 
