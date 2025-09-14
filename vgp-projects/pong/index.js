@@ -43,8 +43,20 @@
   ball.xVelocity = 5;
   ball.yVelocity = 5;
 
-  // add the paddles and the ball to the view
-  stage.addChild(paddlePlayer, paddleCPU, ball);
+  // Score variables
+  let playerScore = 0;
+  let cpuScore = 0;
+
+  // Create score text fields
+  const txtPlayerScore = draw.textfield("Player Score: 0", "20px Arial", "#666", "center");
+  txtPlayerScore.x = canvas.width / 4;
+  txtPlayerScore.y = 20;
+  const txtCPUScore = draw.textfield("CPU Score: 0", "20px Arial", "#666", "center");
+  txtCPUScore.x = canvas.width * 3 / 4;
+  txtCPUScore.y = 20;
+
+  // add the paddles, ball, and score text fields to the view
+  stage.addChild(paddlePlayer, paddleCPU, ball, txtPlayerScore, txtCPUScore);
 
   document.addEventListener("keyup", onKeyUp);
   document.addEventListener("keydown", onKeyDown);
@@ -94,21 +106,21 @@
       paddleCPU.y -= paddleCPU.yVelocity;
     }
 
-    // TODO 1: bounce the ball off the top
+    // bounce the ball off the top
     if (ball.y < 0) {
       ball.y = 0; 
       ball.yVelocity *= -1; 
       createjs.Sound.play("wall");
     }
 
-    // TODO 2: bounce the ball off the bottom
+    // bounce the ball off the bottom
     if (ball.y > canvas.height - 20) {
       ball.y = canvas.height - 20;
       ball.yVelocity *= -1;
       createjs.Sound.play("wall");
     }
 
-    // TODO 3: bounce the ball off each of the paddles
+    // bounce the ball off each of the paddles
     if (ball.x + 20 > paddleCPU.x && ball.y > paddleCPU.y && ball.y < paddleCPU.y + paddleCPU.height) {
       ball.x = paddleCPU.x - 20; 
       ball.xVelocity *= -1;
@@ -121,6 +133,26 @@
       createjs.Sound.play("hit");
     }
 
+    // check if ball goes out of bounds
+    if (ball.x < 0) {
+      console.log('CPU scores!');
+      cpuScore++;
+      txtCPUScore.text = `CPU Score: ${cpuScore}`;
+      resetBall();
+    } else if (ball.x > canvas.width) {
+      console.log('Player scores!');
+      playerScore++;
+      txtPlayerScore.text = `Player Score: ${playerScore}`;
+      resetBall();
+    }
+  }
+
+  // helper function to reset the ball
+  function resetBall() {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.xVelocity = Math.random() > 0.5 ? 5 : -5;
+    ball.yVelocity = Math.random() > 0.5 ? 5 : -5;
   }
 
   // helper function that wraps the draw.rect function for easy paddle making
