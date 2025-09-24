@@ -73,22 +73,12 @@
         },
         makeShip(color) {
           const
-            radius = 25,
-            ship = draw.rect(radius, radius, color, null, null, -(radius + radius / 10), -(radius / 2));
+          radius = 25,
+          ship = draw.polyStar(radius, 5, 0.5, 0, color);
 
-          // continue to draw on the ship Shape to create our design //
-          draw.circle(radius + 3, color, null, null, null, null, ship);
-          draw.circle(radius, '#CCC', null, null, null, null, ship);
-          draw.polyStar(radius, 3, 0, 0, color, null, null, null, null, ship);
-          draw.circle(radius - 15, '#CCC', null, null, -5, null, ship);
-
-          // reset the radius, other non-radii drawing operations have overwritten it //
-          ship.radius = radius + 3;
-          ship.color = color;
-
-          // rasterize the vector graphic, basically creating a bitmap //
-          ship.snapToPixel = true;
-          ship.cache(-radius - 10, -radius - 10, radius * 2 + 15, radius * 2 + 15);
+          // Add some visual effects to make it shine
+          draw.polyStar(radius * 0.8, 5, 0.5, 0, '#FFFFFF', null, null, null, null, ship);
+          draw.circle(radius * 0.2, '#FFFFFF', null, null, null, null, ship);
 
           // Merge the ship with your game libs makeBody()
           Object.assign(ship, phyz.makeBody('ship'));
@@ -102,28 +92,12 @@
           // set the update behavior for the ship //
           ship.update = updateShip;
 
-          /*
-           * Returns the global position of where
-           * we want the exhaust to show up. This 
-           * global point will be passed to the 
-           * partical manager, who'll create and 
-           * render the ship's exhaust.
-           */
           ship.getExhaustPoint = getExhaustPoint;
-
-          /*
-           * Returns the global position from where
-           * we want the projectile to launch. This 
-           * global point will be passed to the 
-           * projectile manager, who'll create and 
-           * render the ship's projectile.
-           */
           ship.getProjectilePoint = getProjectilePoint;
-          
-          ship.explosion = fx
-            .makeEmitter(5, 8, null, new Proton.Velocity(new Proton.Span(4, 2), new Proton.Span(0, 360), 'polar'), [new Proton.RandomDrift(5, 0, .35)]);
 
-          // randomized position within canvas //
+          ship.explosion = fx
+          .makeEmitter(5, 8, null, new Proton.Velocity(new Proton.Span(4, 2), new Proton.Span(0, 360), 'polar'), [new Proton.RandomDrift(5, 0, .35)]);
+
           ship.x = numz.randomIntBetween(0, canvas.width);
           ship.y = numz.randomIntBetween(0, canvas.height);
 
